@@ -11,7 +11,9 @@ function TODOList() {
     
     const getNextId = ( ( id ) => () => ++id )( 3 );
     function handleDelete( id ) {
-        console.log("Just Clicked "+ id );
+        console.log( "Just Deleted " + id );
+        const newDeleted = todos.filter( element => element.id !== id );
+        setTodos( newDeleted );
     }
     function addNewTodo( e ) {
         e.preventDefault();
