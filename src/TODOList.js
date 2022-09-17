@@ -27,6 +27,17 @@ function TODOList() {
         setTodos( nowTodos );
         setNewTodo( "" );
     }
+    function handleComplete( id ) {
+       const CompletedTodo=todos.map( element => {
+           if ( element.id === id ) {
+                return {...element,completed:!element.completed}
+           }
+           else {
+               return element
+           }
+       } )
+        setTodos( CompletedTodo );
+    }
    
   return (
     <div className="App">
@@ -50,7 +61,8 @@ function TODOList() {
             <label>
               Completed?
               <input
-                type="checkbox"
+                        type="checkbox"
+                        onClick={()=>handleComplete(todo.id)}
                 onChange={(e) => console.log(todo.id, e.target.checked)}
                 checked={todo.completed}
               />
